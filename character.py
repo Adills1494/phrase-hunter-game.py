@@ -9,7 +9,7 @@ class Character:
             self.was_guessed = False
     
     # Make a single string character name guess as an arg
-    # If 
+    # If guess == original update the was_guessed bool to True
     def check_guess(self, guess):
         self.guess = guess
         if self.guess.lower() == self.original.lower():
@@ -18,4 +18,11 @@ class Character:
     def __str__(self):
         return "{self.original}".format(self = self)
     
-    
+    @property
+    def show_guess(self):
+        # When called, show original character it was_guessed is True
+        # Else, show an underscore
+        if self.was_guessed:
+            return self.original
+        else:
+            return "_"
